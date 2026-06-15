@@ -123,7 +123,7 @@ function buildArticle(post) {
 function buildCategoryPage(catSlug, catInfo) {
   const catPosts = POSTS.filter(p => p.category === catSlug);
   const items = catPosts.map(p =>
-    `<a href="/blog/${p.slug}.html" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit"><span style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span><div><h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3><p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p></div></a>`
+    `<a href="${BASE}/blog/${p.slug}.html" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit"><span style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span><div><h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3><p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p></div></a>`
   ).join('');
   return CATEGORY_TPL.replaceAll('{{CATEGORY_LABEL}}', catInfo.label)
     .replaceAll('{{COUNT}}', String(catPosts.length))
@@ -155,7 +155,17 @@ function buildRSS() {
       <guid>${SITE_URL}/blog/${p.slug}.html</guid>
     </item>\n`;
   }
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n  <title>效率工具箱</title>\n  <link>${SITE_URL}</link>\n  <description>Notion模板、数字笔记技巧、效率工具测评和生产力系统</description>\n  <language>zh-CN</language>\n  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>\n${items}</channel>\n</rss>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="${BASE}/assets/rss.xsl"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+<channel>
+  <title>效率工具箱</title>
+  <link>${SITE_URL}</link>
+  <description>Notion模板、数字笔记技巧、效率工具测评和生产力系统</description>
+  <language>zh-CN</language>
+  <atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+${items}</channel>
+</rss>`;
 }
 
 function build() {
@@ -175,11 +185,10 @@ function build() {
   // Build blog list
   ensureDir(path.join(dist, 'blog'));
   const blogListPosts = POSTS.map(p =>
-    `<a href="/blog/${p.slug}.html" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit"><span style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span><div><h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3><p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p></div></a>`
+    `<a href="${BASE}/blog/${p.slug}.html" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit"><span style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span><div><h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3><p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p></div></a>`
   ).join('');
   let blogIndex = fs.readFileSync(path.join(__dirname, 'blog/index.html'), 'utf8');
-  blogIndex = blogIndex.replace(/href="\/([^h])/g, 'href="' + BASE + '/$1');
-  blogIndex = blogIndex.replace(/src="\//g, 'src="' + BASE + '/');
+  // Note: blog/index.html already uses /seo-site/ absolute paths — do NOT regex-rewrite them
   // Inject posts into blog list page
   blogIndex = blogIndex.replace(/<div class="blog-list" id="blogList">[\s\S]*?<\/div>\s*<footer/, `<div class="blog-list">${blogListPosts}</div><footer`);
   fs.writeFileSync(path.join(dist, 'blog/index.html'), blogIndex);
