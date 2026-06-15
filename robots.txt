@@ -1,0 +1,4 @@
+/*
+User-agent: *
+Allow: /
+Sitemap: https://yuchen686668-lang.github.io/seo-site/sitemap.xml
