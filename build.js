@@ -11,7 +11,7 @@ const path = require('path');
 // Get site URL from CF_PAGES_URL env var, else use pages.dev subdomain, else placeholder
 const SITE_URL = process.env.CF_PAGES_URL
   ? `https://${process.env.CF_PAGES_URL}`
-  : process.env.SITE_URL || 'https://YOUR-SITE.pages.dev';
+  : process.env.SITE_URL || 'https://yuchen686668-lang.github.io/seo-site';
 
 const CATEGORIES = {
   notion: { label: 'Notion模板', slug: 'notion' },

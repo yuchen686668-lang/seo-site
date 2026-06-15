@@ -1,4 +1,4 @@
 /*
 User-agent: *
 Allow: /
-Sitemap: https://YOUR-SITE.pages.dev/sitemap.xml
+Sitemap: https://yuchen686668-lang.github.io/seo-site/sitemap.xml
