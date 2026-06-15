@@ -8,10 +8,14 @@
 const fs = require('fs');
 const path = require('path');
 
+// Base path for GitHub Pages project sites: "/seo-site"
+// For custom domains or user/org pages (xxx.github.io), set to ""
+const BASE = '/seo-site';
+
 // Get site URL from CF_PAGES_URL env var, else use pages.dev subdomain, else placeholder
 const SITE_URL = process.env.CF_PAGES_URL
   ? `https://${process.env.CF_PAGES_URL}`
-  : process.env.SITE_URL || 'https://yuchen686668-lang.github.io/seo-site';
+  : process.env.SITE_URL || 'https://yuchen686668-lang.github.io' + BASE;
 
 const CATEGORIES = {
   notion: { label: 'Notion模板', slug: 'notion' },
@@ -49,12 +53,12 @@ const ARTICLE_TPL = `<!DOCTYPE html>
   <meta name="description" content="{{EXCERPT}}">
   <meta name="keywords" content="{{KEYWORDS}}">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="/blog/{{SLUG}}.html">
+  <link rel="canonical" href="${BASE}/blog/{{SLUG}}.html">
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{EXCERPT}}">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="{{DATE}}">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="${BASE}/assets/css/style.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,15 +71,15 @@ const ARTICLE_TPL = `<!DOCTYPE html>
   </script>
 </head>
 <body>
-<header class="site-header"><div class="container"><a href="/" class="logo">🧰 效率工具箱</a><nav><a href="/">首页</a><a href="/blog/">文章</a><a href="/about.html">关于</a></nav></div></header>
+<header class="site-header"><div class="container"><a href="${BASE}/" class="logo">🧰 效率工具箱</a><nav><a href="${BASE}/">首页</a><a href="${BASE}/blog/">文章</a><a href="${BASE}/about.html">关于</a></nav></div></header>
 <main class="article-container"><article>
   <header class="article-header">
-    <nav class="breadcrumb"><a href="/">首页</a> / <a href="/blog/">文章</a> / <a href="/blog/{{CATEGORY}}/">{{CATEGORY_LABEL}}</a></nav>
+    <nav class="breadcrumb"><a href="${BASE}/">首页</a> / <a href="${BASE}/blog/">文章</a> / <a href="${BASE}/blog/{{CATEGORY}}/">{{CATEGORY_LABEL}}</a></nav>
     <h1>{{TITLE}}</h1>
-    <div class="article-meta"><span>📅 {{DATE}}</span><span>📂 <a href="/blog/{{CATEGORY}}/">{{CATEGORY_LABEL}}</a></span><span>⏱ {{READ_TIME}}分钟阅读</span></div>
+    <div class="article-meta"><span>📅 {{DATE}}</span><span>📂 <a href="${BASE}/blog/{{CATEGORY}}/">{{CATEGORY_LABEL}}</a></span><span>⏱ {{READ_TIME}}分钟阅读</span></div>
   </header>
   <div class="article-body">{{CONTENT}}</div>
-  <div class="cta-box" style="margin-top:48px"><h3>📬 获取更多效率工具推荐</h3><p>每周分享一篇深度好文，关于Notion、数字笔记和生产力方法。</p><a href="/rss.xml" class="btn">订阅 RSS</a></div>
+  <div class="cta-box" style="margin-top:48px"><h3>📬 获取更多效率工具推荐</h3><p>每周分享一篇深度好文，关于Notion、数字笔记和生产力方法。</p><a href="${BASE}/rss.xml" class="btn">订阅 RSS</a></div>
 </article></main>
 <footer class="site-footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 效率工具箱 · All Rights Reserved</p></div></div></footer>
 </body>
@@ -89,10 +93,10 @@ const CATEGORY_TPL = `<!DOCTYPE html>
   <title>{{CATEGORY_LABEL}} — 效率工具箱</title>
   <meta name="description" content="效率工具箱 {{CATEGORY_LABEL}} 分类下的所有文章。">
   <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="${BASE}/assets/css/style.css">
 </head>
 <body>
-<header class="site-header"><div class="container"><a href="/" class="logo">🧰 效率工具箱</a><nav><a href="/">首页</a><a href="/blog/">文章</a><a href="/about.html">关于</a></nav></div></header>
+<header class="site-header"><div class="container"><a href="${BASE}/" class="logo">🧰 效率工具箱</a><nav><a href="${BASE}/">首页</a><a href="${BASE}/blog/">文章</a><a href="${BASE}/about.html">关于</a></nav></div></header>
 <div class="blog-list-header"><h1>{{CATEGORY_LABEL}}</h1><p style="color:#6b7280;margin-top:8px">共 {{COUNT}} 篇文章</p></div>
 <div class="blog-list">{{ITEMS}}</div>
 <footer class="site-footer"><div class="container"><div class="footer-bottom"><p>&copy; 2026 效率工具箱 · All Rights Reserved</p></div></div></footer>
@@ -174,6 +178,8 @@ function build() {
     `<a href="/blog/${p.slug}.html" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit"><span style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span><div><h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3><p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p></div></a>`
   ).join('');
   let blogIndex = fs.readFileSync(path.join(__dirname, 'blog/index.html'), 'utf8');
+  blogIndex = blogIndex.replace(/href="\/([^h])/g, 'href="' + BASE + '/$1');
+  blogIndex = blogIndex.replace(/src="\//g, 'src="' + BASE + '/');
   // Inject posts into blog list page
   blogIndex = blogIndex.replace(/<div class="blog-list" id="blogList">[\s\S]*?<\/div>\s*<footer/, `<div class="blog-list">${blogListPosts}</div><footer`);
   fs.writeFileSync(path.join(dist, 'blog/index.html'), blogIndex);

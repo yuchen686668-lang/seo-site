@@ -144,7 +144,7 @@ const POSTS = [
 
   const featured = POSTS.filter(p => p.featured);
   grid.innerHTML = featured.map(p => `
-    <a href="/blog/${p.slug}.html" class="post-card">
+    <a href="/seo-site/blog/${p.slug}.html" class="post-card">
       <div class="post-card-body">
         <span class="cat-tag">${categoryLabel(p.category)}</span>
         <h3>${p.title}</h3>

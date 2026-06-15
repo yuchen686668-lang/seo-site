@@ -7,16 +7,16 @@
   <meta name="description" content="效率工具箱全部文章 — Notion模板、数字笔记技巧、效率工具测评和生产力系统搭建。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yuchen686668-lang.github.io/seo-site/blog/">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/seo-site/assets/css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="/" class="logo">🧰 效率工具箱</a>
+      <a href="/seo-site/" class="logo">🧰 效率工具箱</a>
       <nav>
-        <a href="/">首页</a>
-        <a href="/blog/">文章</a>
-        <a href="/about.html">关于</a>
+        <a href="/seo-site/">首页</a>
+        <a href="/seo-site/blog/">文章</a>
+        <a href="/seo-site/about.html">关于</a>
       </nav>
     </div>
   </header>
@@ -34,13 +34,13 @@
     </div>
   </footer>
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/seo-site/assets/js/main.js"></script>
   <script>
     (function(){
       const list = document.getElementById('blogList');
       const posts = window.POSTS || [];
       list.innerHTML = posts.map(p => `
-        <a href="/blog/${p.slug}.html" class="blog-item" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit">
+        <a href="/seo-site/blog/${p.slug}.html" class="blog-item" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit">
           <span class="date" style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span>
           <div>
             <h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3>
