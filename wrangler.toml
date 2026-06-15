@@ -1,0 +1,9 @@
+# Cloudflare Pages deployment config
+# Deploy: push to GitHub → Cloudflare Pages auto-builds and deploys
+
+name = "seo-site"
+compatibility_date = "2026-06-15"
+
+[build]
+  command = "node build.js"
+  output_dir = "dist"

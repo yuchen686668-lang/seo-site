@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全部文章 — 效率工具箱</title>
+  <meta name="description" content="效率工具箱全部文章 — Notion模板、数字笔记技巧、效率工具测评和生产力系统搭建。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://YOUR-SITE.pages.dev/blog/">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">🧰 效率工具箱</a>
+      <nav>
+        <a href="/">首页</a>
+        <a href="/blog/">文章</a>
+        <a href="/about.html">关于</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="blog-list-header">
+    <h1>📝 全部文章</h1>
+    <p style="color:#6b7280;margin-top:8px">Notion模板 · 数字笔记 · 效率工具 · 生产力系统</p>
+  </div>
+
+  <div class="blog-list" id="blogList"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom"><p>&copy; 2026 效率工具箱 · All Rights Reserved</p></div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>
+    (function(){
+      const list = document.getElementById('blogList');
+      const posts = window.POSTS || [];
+      list.innerHTML = posts.map(p => `
+        <a href="/blog/${p.slug}.html" class="blog-item" style="display:flex;gap:20px;padding:24px 0;border-bottom:1px solid #e5e7eb;text-decoration:none;color:inherit">
+          <span class="date" style="font-size:0.85rem;color:#9ca3af;min-width:90px;padding-top:3px">${p.date}</span>
+          <div>
+            <h3 style="font-size:1.2rem;margin-bottom:6px;color:#0f172a">${p.title}</h3>
+            <p style="font-size:0.9rem;color:#6b7280">${p.excerpt}</p>
+          </div>
+        </a>
+      `).join('');
+    })();
+  </script>
+</body>
+</html>
