@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion公式完全指南：从入门到自动化你的数据库 — 效率工具箱</title>
+  <meta name="description" content="详解Notion公式系统的核心语法、常用函数和实战案例，让你的模板自动计算收入、进度和提醒。">
+  <meta name="keywords" content="Notion公式,formula,自动化,数据库,rollup,计算">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/seo-site/blog/notion-formulas-guide.html">
+  <meta property="og:title" content="Notion公式完全指南：从入门到自动化你的数据库">
+  <meta property="og:description" content="详解Notion公式系统的核心语法、常用函数和实战案例，让你的模板自动计算收入、进度和提醒。">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://yuchen686668-lang.github.io/seo-site/blog/notion-formulas-guide.html">
+  <meta property="og:site_name" content="效率工具箱">
+  <meta property="article:published_time" content="2026-06-17">
+  <meta property="article:section" content="Notion模板">
+  <meta property="article:tag" content="Notion公式,formula,自动化,数据库,rollup,计算">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Notion公式完全指南：从入门到自动化你的数据库">
+  <meta name="twitter:description" content="详解Notion公式系统的核心语法、常用函数和实战案例，让你的模板自动计算收入、进度和提醒。">
+  <link rel="stylesheet" href="/seo-site/assets/css/style.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Notion公式完全指南：从入门到自动化你的数据库",
+    "description": "详解Notion公式系统的核心语法、常用函数和实战案例，让你的模板自动计算收入、进度和提醒。",
+    "datePublished": "2026-06-17",
+    "dateModified": "2026-06-17",
+    "author": { "@type": "Person", "name": "效率工具箱" },
+    "publisher": { "@type": "Organization", "name": "效率工具箱", "url": "https://yuchen686668-lang.github.io/seo-site" },
+    "mainEntityOfPage": "https://yuchen686668-lang.github.io/seo-site/blog/notion-formulas-guide.html",
+    "wordCount": "1007"
+  }
+  </script>
+</head>
+<body>
+<header class="site-header"><div class="container"><a href="/seo-site/" class="logo">🧰 效率工具箱</a><nav><a href="/seo-site/">首页</a><a href="/seo-site/blog/">文章</a><a href="/seo-site/about.html">关于</a></nav></div></header>
+<!-- AdSense: Top Banner -->
+<div class="ad-container ad-top"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<main class="article-container"><article>
+  <header class="article-header">
+    <nav class="breadcrumb"><a href="/seo-site/">首页</a> / <a href="/seo-site/blog/">文章</a> / <a href="/seo-site/blog/notion/">Notion模板</a></nav>
+    <h1>Notion公式完全指南：从入门到自动化你的数据库</h1>
+    <div class="article-meta"><span>📅 2026-06-17</span><span>📂 <a href="/seo-site/blog/notion/">Notion模板</a></span><span>⏱ 13分钟阅读</span></div>
+  </header>
+  <!-- AdSense: In-article (after intro) -->
+  <div class="ad-container ad-in-article"><ins class="adsbygoogle" style="display:block;text-align:center" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-layout="in-article" data-ad-format="fluid"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+  <div class="article-body"><div class="affiliate-disclosure">💡 本文提到的功能在我们的付费Notion模板中已经预配置好公式，省去你手动调试的时间。</div><h2>为什么你需要学Notion公式</h2><p>Notion的数据库很强大，但如果不加公式，它只是一个好看的表格。公式让你的数据库从"被动记录"变成"主动计算"——自动汇总收入、计算进度百分比、根据条件标色提醒、判断到期日期。</p><h2>公式的基础语法</h2><p>Notion公式基于一种简化的函数语言。核心概念：<strong>属性引用</strong>（用 prop("属性名") 读取其他列的值）、<strong>函数调用</strong>（if(), round(), dateAdd(), format() 等）、<strong>运算符</strong>（+、-、*、/、>、<、==、&&、||）。</p><h2>最常用的5个公式场景</h2><h3>1. 自动计算进度百分比</h3><p>公式：round(prop("当前值") / prop("目标值") * 100)。结果会显示为数字，搭配进度条显示更直观。</p><h3>2. 条件标色（到期提醒）</h3><p>公式：if(dateBetween(prop("到期日"), now(), "days") < 7, "🔴 即将到期", "🟢 安全")。用emoji代替颜色——Notion公式不能直接控制文字颜色，但emoji足够醒目。</p><h3>3. 自动汇总（配合Rollup）</h3><p>先用Rollup从关联数据库中拉取汇总值（如sum、average、count），再用公式处理。例如：prop("总收入Rollup") - prop("总支出Rollup") 得到净利润。</p><h3>4. 日期推算</h3><p>公式：dateAdd(prop("开始日期"), 30, "days") 自动计算30天后的截止日。dateBetween(prop("到期日"), now(), "days") 计算剩余天数。</p><h3>5. 条件分组标签</h3><p>公式：if(prop("金额") > 1000, "大额", if(prop("金额") > 100, "中等", "小额"))。嵌套if实现多级分类。</p><h2>Rollup：公式的最佳搭档</h2><p>Rollup属性让你从关联数据库中汇总数据。常见用法：统计某客户的所有订单总额、计算某项目的子任务完成率、获取某宠物的最近一次就诊日期。设置步骤：添加Relation属性链接到另一个数据库 → 添加Rollup属性 → 选择Relation → 选择目标属性 → 选择计算方式（sum、average、count、latest等）。</p><h2>调试公式的3个技巧</h2><ol><li><strong>分步构建</strong>：先让基础公式跑起来，再加条件分支。</li><li><strong>用format()检查类型</strong>：如果公式报错，用 format(prop("某属性")) 查看实际数据类型。</li><li><strong>从简单到复杂</strong>：一个公式只做一件事。不要试图在一个公式里处理所有逻辑。</li></ol></div>
+  <!-- Affiliate CTA -->
+  <div class="cta-box affiliate-cta" style="margin-top:48px">
+    <h3>🛒 配套Notion模板推荐</h3>
+    <p>本文提到的效率系统都有对应的Notion模板——开箱即用，省去2-8小时的搭建时间。</p>
+    <ul class="affiliate-links">
+      <li><a href="https://www.etsy.com/shop/NotionFlowTemplates" target="_blank" rel="noopener sponsored">ADHD任务拆解系统 — $14.99 🛡</a></li>
+      <li><a href="https://www.etsy.com/shop/NotionFlowTemplates" target="_blank" rel="noopener sponsored">自由职业者CRM+财务 — $18.99 🛡</a></li>
+      <li><a href="https://www.etsy.com/shop/NotionFlowTemplates" target="_blank" rel="noopener sponsored">考研复习作战系统 — $16.99 🛡</a></li>
+      <li><a href="https://www.etsy.com/shop/NotionFlowTemplates" target="_blank" rel="noopener sponsored">OKR目标管理+复盘 — $14.99 🛡</a></li>
+      <li><a href="https://www.etsy.com/shop/NotionFlowTemplates" target="_blank" rel="noopener sponsored">宠物健康追踪器 — $12.99 🛡</a></li>
+    </ul>
+    <p style="font-size:0.8rem;color:#9ca3af;margin-top:12px">💡 通过以上链接购买，我可能获得少量佣金，不影响你的价格。所有推荐均为亲自使用后真心推荐。</p>
+  </div>
+  <div class="cta-box" style="margin-top:24px"><h3>📬 获取更多效率工具推荐</h3><p>每周分享一篇深度好文，关于Notion、数字笔记和生产力方法。</p><a href="/seo-site/rss.xml" class="btn">订阅 RSS</a></div>
+</article></main>
+<!-- AdSense: Bottom Banner -->
+<div class="ad-container ad-bottom"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>
+<footer class="site-footer"><div class="container"><div class="footer-grid">
+  <div><h4>效率工具箱</h4><p>用工具省下时间。<br>Notion模板 · 效率工具 · 生产力系统</p></div>
+  <div><h4>导航</h4><a href="/seo-site/">首页</a><a href="/seo-site/blog/">全部文章</a><a href="/seo-site/about.html">关于我们</a><a href="/seo-site/privacy.html">隐私政策</a></div>
+  <div><h4>关注</h4><a href="/seo-site/rss.xml">RSS 订阅</a></div>
+</div><div class="footer-bottom"><p>&copy; 2026 效率工具箱 · All Rights Reserved</p></div></div></footer>
+</body>
+</html>

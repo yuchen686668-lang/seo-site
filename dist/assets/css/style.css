@@ -173,6 +173,34 @@ h3{font-size:1.25rem;font-weight:600}
   .category-grid{grid-template-columns:1fr 1fr}
 }
 
+/* ===== Ad Containers ===== */
+.ad-container{
+  max-width:760px;margin:16px auto;padding:0 24px;
+  min-height:90px; /* placeholder until AdSense fills */
+}
+.ad-top{margin-top:20px}
+.ad-bottom{margin-bottom:24px}
+.ad-in-article{margin:20px 0}
+
+/* ===== Affiliate Links ===== */
+.affiliate-links{
+  list-style:none;padding:0;margin:16px 0;
+}
+.affiliate-links li{
+  padding:10px 16px;border:1px solid #e5e7eb;border-radius:8px;
+  margin-bottom:8px;transition:background 0.2s;
+}
+.affiliate-links li:hover{
+  background:#f8fafc;
+}
+.affiliate-links a{
+  color:#2563eb;font-weight:500;
+}
+.affiliate-cta{
+  background:linear-gradient(135deg,#fef9c3,#fef3c7);
+  border:1px solid #fde68a;
+}
+
 /* ===== Utility ===== */
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
 .text-center{text-align:center}

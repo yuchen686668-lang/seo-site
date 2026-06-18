@@ -134,6 +134,79 @@ const POSTS = [
     date: "2026-05-05",
     tags: ["周复盘","效率方法","习惯"],
     featured: false
+  },
+  // === 新增8篇 ===
+  {
+    slug: "notion-formulas-guide",
+    title: "Notion公式完全指南：从入门到自动化你的数据库",
+    excerpt: "详解Notion公式系统的核心语法、常用函数和实战案例，让你的模板自动计算收入、进度和提醒。",
+    category: "notion",
+    date: "2026-06-17",
+    tags: ["Notion公式","自动化","数据库"],
+    featured: true
+  },
+  {
+    slug: "morning-routine-productivity",
+    title: "高效早晨仪式：5个习惯让你从起床开始就赢了一天",
+    excerpt: "不是早起就行——关键是早起后做什么。5个经过科学验证的晨间习惯组合，实测30天后的变化。",
+    category: "productivity",
+    date: "2026-06-16",
+    tags: ["晨间仪式","早起","效率","习惯"],
+    featured: false
+  },
+  {
+    slug: "notion-database-views-guide",
+    title: "Notion数据库6种视图详解：Table、Board、Calendar、Timeline、Gallery、List",
+    excerpt: "同一个数据库用6种方式呈现——每种视图适合不同场景，本文帮你选择最合适的呈现方式。",
+    category: "notion",
+    date: "2026-06-15",
+    tags: ["Notion","数据库视图","Board","Calendar"],
+    featured: true
+  },
+  {
+    slug: "time-blocking-method",
+    title: "时间块方法：把一天切成时段，每块只做一件事",
+    excerpt: "Cal Newport推荐的Time Blocking方法在Notion中的具体实现——比to-do list更有效的日程管理方式。",
+    category: "productivity",
+    date: "2026-06-13",
+    tags: ["时间块","Time Blocking","日程管理"],
+    featured: false
+  },
+  {
+    slug: "notion-habits-tracker-setup",
+    title: "用Notion搭建习惯追踪器：30天养成一个好习惯的科学方法",
+    excerpt: "不只是打卡——科学的习惯追踪需要累计统计、趋势可视化和中断恢复策略。完整搭建指南。",
+    category: "notion",
+    date: "2026-06-11",
+    tags: ["Notion","习惯追踪","习惯养成"],
+    featured: true
+  },
+  {
+    slug: "notion-student-system",
+    title: "大学生Notion全能系统：课程、作业、笔记、考试一站搞定",
+    excerpt: "从课表排期到作业追踪、从课堂笔记到考试复习——大学生需要的所有Notion功能在一个系统里。",
+    category: "notion",
+    date: "2026-06-09",
+    tags: ["Notion","大学生","课程管理"],
+    featured: true
+  },
+  {
+    slug: "notion-automation-workflows",
+    title: "Notion自动化进阶：用Formula+Rollup+Button打造零手动系统",
+    excerpt: "真正的躺赚是让系统自动运转——3种Notion内置自动化方法的组合使用，打造几乎不需要手动维护的数据库。",
+    category: "notion",
+    date: "2026-06-07",
+    tags: ["Notion","自动化","Formula","Rollup"],
+    featured: true
+  },
+  {
+    slug: "notion-vs-evernote-2026",
+    title: "Notion vs Evernote 2026：为什么越来越多人在逃离Evernote",
+    excerpt: "Evernote曾经是笔记之王，但2026年的现实是——Notion在几乎所有维度都赢了。详细对比和迁移指南。",
+    category: "tools",
+    date: "2026-06-05",
+    tags: ["Notion","Evernote","对比","迁移"],
+    featured: true
   }
 ];
 
